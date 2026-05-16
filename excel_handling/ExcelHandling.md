@@ -1,7 +1,5 @@
 # Pandas Excel Handling Notes
 
-## Introduction
-
 This guide explains how to use pandas for:
 - Reading Excel files
 - Reading multiple sheets
@@ -11,7 +9,7 @@ This guide explains how to use pandas for:
 
 ---
 
-# Import Pandas
+#### Import Pandas
 
 ```python
 import pandas as pd
@@ -21,7 +19,7 @@ import pandas as pd
 
 ---
 
-# Define File Path
+#### Define File Path
 
 ```python
 file_path = "downloads\\Monthly_Portfolio_30042026.xlsx"
@@ -31,9 +29,7 @@ This stores the Excel file location inside a variable.
 
 ---
 
-# Reading Excel File
-
-## Code
+#### Reading Excel File
 
 ```python
 df = pd.read_excel(file_path)
@@ -47,7 +43,7 @@ It:
 
 ---
 
-# What is DataFrame?
+#### What is DataFrame?
 
 A DataFrame is a table structure in pandas.
 
@@ -60,7 +56,7 @@ Example:
 
 This entire table is called a DataFrame.
 
-# Print Entire DataFrame
+#### Print Entire DataFrame
 
 ```python
 print(df)
@@ -68,9 +64,9 @@ print(df)
 
 ---
 
-# View First Rows Using `head()`
+#### View First Rows Using `head()`
 
-## First 5 Rows
+- First 5 Rows
 
 ```python
 print(df.head())
@@ -86,7 +82,7 @@ Useful for:
 
 ---
 
-# View First 3 Rows
+- View First 3 Rows
 
 ```python
 print(df.head(3))
@@ -96,9 +92,7 @@ Displays only:
 
 ---
 
-# View Last Rows Using `tail()`
-
-## Code
+#### View Last Rows Using `tail()`
 
 ```python
 print(df.tail())
@@ -113,7 +107,7 @@ Useful for:
 
 ---
 
-# Read All Sheets from Workbook
+#### Read All Sheets from Workbook
 
 ## Code
 
@@ -122,7 +116,7 @@ sheet_data = pd.read_excel(file_path, sheet_name=None)
 
 print(sheet_data.keys())
 ```
-## `sheet_name=None`
+#### `sheet_name=None`
 
 This tells pandas:
 
@@ -132,7 +126,7 @@ Read ALL sheets from workbook
 
 ---
 
-# Returned Data Type
+#### Returned Data Type
 
 Pandas returns a:
 
@@ -148,7 +142,7 @@ Where:
 
 ---
 
-# Example Output
+- Example Output
 
 ```python
 dict_keys([
@@ -164,7 +158,7 @@ These are workbook sheet names.
 
 ---
 
-# Access Particular Sheet
+#### Access Particular Sheet
 
 ## Method 1
 
@@ -173,10 +167,6 @@ df = pd.read_excel(file_path, sheet_name="qSCF")
 
 print(df)
 ```
-
----
-
-# Explanation
 
 Reads only:
 
@@ -188,9 +178,9 @@ from workbook.
 
 ---
 
-# Alternative Method
+#### Alternative Method
 
-## Method 2
+#### Method 2
 
 ```python
 sheet_data = pd.read_excel(file_path, sheet_name=None)
@@ -198,28 +188,18 @@ sheet_data = pd.read_excel(file_path, sheet_name=None)
 print(sheet_data["qSCF"].head())
 ```
 
----
-
-# Explanation
-
 - Reads all sheets
 - Accesses specific sheet using dictionary key
 
 ---
 
-# Using `pd.ExcelFile()`
-
-## Code
+#### Using `pd.ExcelFile()`
 
 ```python
 excel = pd.ExcelFile(file_path)
 
 print(excel.sheet_names)
 ```
-
----
-
-# Explanation
 
 `ExcelFile()`:
 - opens workbook structure
@@ -230,10 +210,6 @@ Useful when:
 - you want sheet names first
 - dynamic sheet processing is required
 
----
-
-# Output Example
-
 ```python
 [
 'qActive',
@@ -243,9 +219,6 @@ Useful when:
 'qSCF'
 ]
 ```
-
----
-
 # Difference Between `read_excel()` and `ExcelFile()`
 
 | Feature | `pd.read_excel()` | `pd.ExcelFile()` |
@@ -260,7 +233,7 @@ Useful when:
 
 ---
 
-# Workflow Understanding
+#### Workflow Understanding
 
 ## `read_excel()`
 
@@ -278,80 +251,8 @@ Excel File → Workbook Object → Sheet Selection → DataFrame
 
 ---
 
-# Important Notes
 
-## `head()`
 
-| Function | Meaning |
-|---|---|
-| `head()` | First 5 rows |
-| `head(3)` | First 3 rows |
-
----
-
-## `tail()`
-
-| Function | Meaning |
-|---|---|
-| `tail()` | Last 5 rows |
-
----
-
-# Real-World Use Cases
-
-These concepts are heavily used in:
-- Mutual fund analysis
-- Bank statement processing
-- Stock dashboards
-- Automation pipelines
-- Data cleaning systems
-- Excel report generators
-
----
-
-# Complete Code
-
-```python
-import pandas as pd
-
-file_path = "downloads\\Monthly_Portfolio_30042026.xlsx"
-
-# Read Excel file
-df = pd.read_excel(file_path)
-
-# Print complete DataFrame
-# print(df)
-
-# First 5 rows
-# print(df.head())
-
-# First 3 rows
-# print(df.head(3))
-
-# Last 5 rows
-print(df.tail())
-
-# Get all sheet names using read_excel
-sheet_data = pd.read_excel(file_path, sheet_name=None)
-
-print(sheet_data.keys())
-
-# Read specific sheet
-df = pd.read_excel(file_path, sheet_name="qSCF")
-
-# print(df)
-
-# Alternative way
-# print(sheet_data["qSCF"].head())
-
-# Open workbook object
-excel = pd.ExcelFile(file_path)
-
-# Print all sheet names
-print(excel.sheet_names)
-```
-
----
 
 # Summary Table
 
@@ -367,34 +268,6 @@ print(excel.sheet_names)
 
 ---
 
-# Important Beginner Notes
-
-## Common Mistake
-
-Do NOT name your Python file:
-
-```plaintext
-pandas.py
-```
-
-because it conflicts with pandas library.
-
-Correct examples:
-- `main.py`
-- `excel_learning.py`
-
----
-
-# Understanding Variables
-
-| Variable | Meaning |
-|---|---|
-| `df` | DataFrame |
-| `sheet_data` | Dictionary containing sheets |
-| `excel` | Workbook object |
-
----
-
 # Best Practices
 
 | Situation | Recommended Function |
@@ -405,16 +278,3 @@ Correct examples:
 | Large workbook processing | `ExcelFile()` |
 
 ---
-
-# Next Topics To Learn
-
-- Selecting columns
-- Filtering rows
-- Handling null values
-- Sorting data
-- GroupBy
-- Merging Excel files
-- Pivot tables
-- Exporting to Excel
-- Data cleaning
-- Financial analysis using pandas

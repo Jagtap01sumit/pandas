@@ -38,13 +38,6 @@ This stores the Excel file location inside a variable.
 ```python
 df = pd.read_excel(file_path)
 ```
-
----
-
-## Explanation
-
-### `pd.read_excel()`
-
 This is the MOST commonly used pandas function.
 
 It:
@@ -67,11 +60,7 @@ Example:
 
 This entire table is called a DataFrame.
 
----
-
 # Print Entire DataFrame
-
-## Code
 
 ```python
 print(df)
@@ -87,10 +76,6 @@ print(df)
 print(df.head())
 ```
 
----
-
-## Explanation
-
 `head()` shows:
 - first 5 rows by default
 
@@ -103,16 +88,9 @@ Useful for:
 
 # View First 3 Rows
 
-## Code
-
 ```python
 print(df.head(3))
 ```
-
----
-
-## Explanation
-
 Displays only:
 - first 3 rows
 
@@ -125,10 +103,6 @@ Displays only:
 ```python
 print(df.tail())
 ```
-
----
-
-## Explanation
 
 `tail()` shows:
 - last 5 rows by default
@@ -148,11 +122,6 @@ sheet_data = pd.read_excel(file_path, sheet_name=None)
 
 print(sheet_data.keys())
 ```
-
----
-
-# Explanation
-
 ## `sheet_name=None`
 
 This tells pandas:
